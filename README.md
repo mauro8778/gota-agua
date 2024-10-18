@@ -122,3 +122,20 @@ En la documentación de Swagger, tienes la opción de seleccionar entre **dos ej
     }
   ]
 }
+#### Respuestas de error
+cuando no se ingresa ningun valor en el body (400)
+{
+  "statusCode": 400,
+  "message": "Debe llenar todos los campos"
+}
+cuando se ingresa un numero menor o igual a 0 (404)
+{
+"statusCode": 404,
+  "message": "Los valores ingresados deben ser mayores que cero."
+}
+cuando se pone un numero que no es entero(404)
+
+{
+"statusCode": 404,
+  "message": "Los valores ingresados deben ser enteros."
+}
