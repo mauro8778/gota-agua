@@ -24,4 +24,4 @@ Asegúrate de tener instalados los siguientes elementos en tu sistema:
 1. Clona el repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/mauro8778/problema-jarro-agua.git
+   git clone gh repo clone mauro8778/gota-agua
