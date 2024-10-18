@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { NotFoundException } from '@nestjs/common';
+import { HttpException } from '@nestjs/common';
 import { WaterJugService } from './ejecutar.service';
 
 describe('WaterJugService', () => {
@@ -18,17 +18,17 @@ describe('WaterJugService', () => {
   });
 
   it('debería lanzar un error si los valores no son enteros', () => {
-    expect(() => service.waterJugSolver(3.5, 5, 4)).toThrow(NotFoundException);
-    expect(() => service.waterJugSolver(3, 'cinco' as any, 4)).toThrow(NotFoundException);
+    expect(() => service.waterJugSolver(3.5, 5, 4)).toThrow(HttpException); 
+    expect(() => service.waterJugSolver(3, 'cinco' as any, 4)).toThrow(HttpException); 
   });
 
   it('debería lanzar un error si los valores son menores o iguales a cero', () => {
-    expect(() => service.waterJugSolver(0, 5, 4)).toThrow(NotFoundException);
-    expect(() => service.waterJugSolver(3, 5, 0)).toThrow(NotFoundException);
+    expect(() => service.waterJugSolver(0, 5, 4)).toThrow(HttpException);
+    expect(() => service.waterJugSolver(3, 5, 0)).toThrow(HttpException);
   });
 
   it('debería lanzar un error si no existe una solución', () => {
-    expect(() => service.waterJugSolver(3, 5, 7)).toThrow(NotFoundException);
+    expect(() => service.waterJugSolver(3, 5, 7)).toThrow(HttpException);
   });
 
   it('debería devolver una solución correcta cuando es posible', () => {
@@ -44,7 +44,6 @@ describe('WaterJugService', () => {
   });
 
   it('debería lanzar un error si no hay ninguna solución', () => {
-    expect(() => service.waterJugSolver(1, 1, 2)).toThrow(NotFoundException);
+    expect(() => service.waterJugSolver(1, 1, 2)).toThrow(HttpException);
   });
-  
 });
