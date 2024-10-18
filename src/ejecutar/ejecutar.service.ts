@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 
 interface SolutionStep {
     step: number;
@@ -24,24 +24,22 @@ export class WaterJugService {
             step: number,
             actions: SolutionStep[]
         }> = [];
+       
 
         if (!Number.isInteger(x_capacity) ||
             !Number.isInteger(y_capacity) ||
             !Number.isInteger(z_amount_wanted)) {
-            throw new NotFoundException('Los valores ingresados deben ser enteros.');
+            throw new HttpException('Los valores ingresados deben ser enteros.', HttpStatus.UNAUTHORIZED);
         }
 
-        if (x_capacity <= 0 ||
-            y_capacity <= 0 ||
-            z_amount_wanted <= 0) {
-            throw new NotFoundException('Los valores ingresados deben ser mayores que cero.');
+        if (x_capacity <= 0 || y_capacity <= 0 || z_amount_wanted <= 0) {
+            throw new HttpException('Los valores ingresados deben ser mayores que cero.', HttpStatus.UNAUTHORIZED);
         }
 
         if (z_amount_wanted > Math.max(x_capacity, y_capacity) ||
             z_amount_wanted % this.gcd(x_capacity, y_capacity) !== 0) {
-            throw new NotFoundException('El problema no tiene solución.');
+            throw new HttpException('El problema no tiene solución.', HttpStatus.UNAUTHORIZED);
         }
-
         queue.push({ bucketX: 0, bucketY: 0, step: 0, actions: [] });
 
         while (queue.length > 0) {

@@ -1,7 +1,8 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, UseInterceptors, UseFilters } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { WaterJugService } from './ejecutar.service';
 import { WaterJugDto } from 'src/dtos/WaterJugoDto';
+import { HttpExceptionFilter } from 'src/http-exception/http-exception.filter';
 
 
 
@@ -11,6 +12,7 @@ export class WaterJugController {
     constructor(private readonly waterJugService: WaterJugService) { }
 
     @Post()
+    @UseFilters(HttpExceptionFilter)
     @ApiOperation({ summary: 'Resuelve el problema de los jarrones de agua' })
     @ApiResponse({ status: 200, description: 'Solución calculada correctamente', type: Object })
     @ApiResponse({ status: 400, description: 'Datos de entrada no válidos' })
