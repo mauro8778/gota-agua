@@ -42,7 +42,7 @@ Una vez que la aplicación esté en funcionamiento, puedes acceder a la document
 
 http://localhost:3000/api
 
-## Tests
+### Tests
 
 Si deseas ejecutar las pruebas locales, puedes usar el siguiente comando:
 
