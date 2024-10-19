@@ -33,6 +33,7 @@ Asegúrate de tener instalados los siguientes elementos en tu sistema:
 npm install
 #### Inicia la aplicacion
 npm run start:Dev
+
 La aplicación se abrirá automáticamente en tu navegador predeterminado en la dirección http://localhost:3000.
 
 ## Documentación API con Swagger
@@ -40,6 +41,14 @@ La aplicación se abrirá automáticamente en tu navegador predeterminado en la 
 Una vez que la aplicación esté en funcionamiento, puedes acceder a la documentación de la API a través de Swagger en la siguiente ruta:
 
 http://localhost:3000/api
+
+## Tests
+
+Si deseas ejecutar las pruebas locales, puedes usar el siguiente comando:
+
+```bash
+npm run test
+
 
 ### DTO Informativo
 
